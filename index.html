@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Neena! 🎉</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Comic Sans MS', sans-serif;
+        overflow-x: hidden;
+        background: linear-gradient(to right, #ffe0f0, #ffccff);
+        text-align: center;
+    }
+    h1 {
+        font-size: 60px;
+        color: #ff3399;
+        margin-top: 50px;
+        animation: colorchange 3s infinite;
+    }
+    @keyframes colorchange {
+        0% { color: #ff3399; }
+        50% { color: #ff66cc; }
+        100% { color: #ff3399; }
+    }
+    p {
+        font-size: 24px;
+        color: #333;
+    }
+    #playButton {
+        font-size: 22px;
+        padding: 15px 25px;
+        margin-top: 30px;
+        cursor: pointer;
+        background-color: #ff3399;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    }
+    .balloon {
+        position: absolute;
+        bottom: -150px;
+        width: 50px;
+        height: 70px;
+        background-color: red;
+        border-radius: 50% 50% 50% 50%;
+        animation: floatUp linear infinite;
+        display: none; /* hidden until song starts */
+    }
+    @keyframes floatUp {
+        0% { transform: translateY(0) rotate(0deg); }
+        100% { transform: translateY(-120vh) rotate(360deg); }
+    }
+    .balloon:after {
+        content: '';
+        position: absolute;
+        bottom: -20px;
+        left: 22px;
+        width: 2px;
+        height: 20px;
+        background: #555;
+    }
+</style>
+</head>
+<body>
+
+<h1>Happy Belated Birthday, Neena! 🎉</h1>
+<p>Sorry I missed your special day, but here’s a little surprise for you!</p>
+
+<button id="playButton">Play Birthday Song 🎵</button>
+
+<!-- Song -->
+<audio id="birthdaySong" loop>
+    <source src="song.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<!-- Balloons -->
+<div class="balloon" style="left: 10%; background-color: #ff0000; animation-duration: 6s;"></div>
+<div class="balloon" style="left: 30%; background-color: #00ff00; animation-duration: 7s;"></div>
+<div class="balloon" style="left: 50%; background-color: #0000ff; animation-duration: 5s;"></div>
+<div class="balloon" style="left: 70%; background-color: #ffcc00; animation-duration: 6.5s;"></div>
+<div class="balloon" style="left: 90%; background-color: #ff00ff; animation-duration: 7.5s;"></div>
+
+<script>
+const playButton = document.getElementById('playButton');
+const song = document.getElementById('birthdaySong');
+const balloons = document.querySelectorAll('.balloon');
+
+playButton.addEventListener('click', () => {
+    song.play();
+    balloons.forEach(b => b.style.display = 'block'); // show balloons
+    playButton.style.display = 'none'; // hide button
+});
+</script>
+
+</body>
+</html>
